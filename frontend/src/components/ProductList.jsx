@@ -172,7 +172,7 @@ function ProductList() {
           Previous
         </button>
         <span>
-          Page {page + 1} of {totalPages || 1}
+          Page {page + 1} of {totalPages || 1} ({totalCount} items)
         </span>
         <button
           onClick={handleNextPage}

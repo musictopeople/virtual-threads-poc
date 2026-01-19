@@ -8,3 +8,6 @@ spring:
     username: user
     password: changeit
     driver-class-name: org.postgresql.Driver
+
+cors:
+  allowed-origins: http://localhost:5173

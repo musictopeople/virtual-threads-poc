@@ -37,7 +37,7 @@ public enum ProductQueries {
     var sql = new StringBuilder(BASE_COUNT.sql);
     var params = new ArrayList<>();
 
-    if (StringUtils.isBlank(nameFilter)) {
+    if (StringUtils.isNotBlank(nameFilter)) {
       sql.append(FILTER_NAME.sql);
       params.add("%" + nameFilter.toLowerCase() + "%");
     }
