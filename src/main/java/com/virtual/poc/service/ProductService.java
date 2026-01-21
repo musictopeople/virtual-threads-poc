@@ -18,8 +18,8 @@ public class ProductService {
     this.repository = repository;
   }
 
-  public ResponseObject<List<Card>> findProducts(String nameFilter, int page, int size) {
-    return repository.find(nameFilter, page, size);
+  public ResponseObject<List<Card>> findProducts(String nameFilter, int offset, int size) {
+    return repository.find(nameFilter, offset, size);
   }
 
   public ResponseObject<Card> findById(UUID id) {
@@ -28,13 +28,5 @@ public class ProductService {
 
   public ResponseObject<Card> createProduct(Product product) {
     return repository.save(product);
-  }
-
-  public void updateProduct(UUID id, UUID version, Product product) {
-    repository.update(id, version, product);
-  }
-
-  public void deleteProduct(UUID id, UUID version) {
-    repository.delete(id, version);
   }
 }

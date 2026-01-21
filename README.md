@@ -4,9 +4,9 @@
 
 When building Java apps I have been working with Project Reactor for a few years now, but I have been wanting to switch over to virtual threads since Java 21. The subscription model can get confusing and mistakes are easily made in Project Reactor that have significant performance costs. Don't get me wrong, I love the functional style and granular controls, but being able to write straightforward Java code and pass off the heavy lifting to the JVM is awful nice.
 
-This project uses Java 25 virtual threads via `spring.threads.virtual.enabled=true`. All request handling uses virtual threads, making blocking JDBC calls scale efficiently without manual thread pool configuration.
+This project uses Java 25 virtual threads via `spring.threads.virtual.enabled=true`. All request handling uses virtual threads, making blocking JDBC calls scale efficiently without manual thread pool configuration. 
 
-The update and delete endpoints still need to be implemented, but there is a React frontend for you to go ahead and wire them up in the backend. Have a blast!
+The update and delete endpoints still need to be implemented, but there is a React frontend for you to go ahead and wire them up. Have a blast!
 
 ## What You Get
 
@@ -17,7 +17,7 @@ The update and delete endpoints still need to be implemented, but there is a Rea
 ## What You Need
 
 - Java 25
-- Node.js 20+
+- Node.js 22+
 - Docker
 
 ## Getting Started

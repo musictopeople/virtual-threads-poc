@@ -80,7 +80,7 @@ function ProductModal({ isOpen, onClose, onSave, onDelete, editProduct }) {
           {error && <div className="error-message">{error}</div>}
 
           <div className="modal-actions">
-            <button type="submit" disabled={saving || deleting}>
+            <button type="submit" disabled={saving || deleting || editProduct}>
               {saving ? 'Saving...' : 'Save'}
             </button>
             {editProduct && (
@@ -88,7 +88,7 @@ function ProductModal({ isOpen, onClose, onSave, onDelete, editProduct }) {
                 type="button"
                 className="delete-btn"
                 onClick={handleDelete}
-                disabled={saving || deleting}
+                disabled={saving || deleting || editProduct}
               >
                 {deleting ? 'Deleting...' : 'Delete'}
               </button>

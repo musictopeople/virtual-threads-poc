@@ -8,7 +8,6 @@ import com.virtual.poc.model.api.ResponseObject;
 import com.virtual.poc.query.ProductQueries;
 import com.virtual.poc.query.Queries;
 import java.util.List;
-import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,8 +23,8 @@ public class ProductRepository {
   }
 
   @SuppressWarnings("SqlSourceToSinkFlow")
-  public ResponseObject<List<Card>> find(String nameFilter, int page, int size) {
-    final Queries dataQuery = ProductQueries.buildSearch(nameFilter, page, size);
+  public ResponseObject<List<Card>> find(String nameFilter, int offset, int size) {
+    final Queries dataQuery = ProductQueries.buildSearch(nameFilter, offset, size);
     final Queries countQuery = ProductQueries.buildCount(nameFilter);
 
     List<Card> products =
@@ -35,7 +34,7 @@ public class ProductRepository {
 
     long totalElements = (total != null) ? total : 0L;
 
-    return new ResponseObject<>(products, new Meta(page, size, totalElements));
+    return new ResponseObject<>(products, new Meta(offset, size, totalElements));
   }
 
   public ResponseObject<Card> findById(java.util.UUID id) {
@@ -49,13 +48,5 @@ public class ProductRepository {
         jdbcTemplate.queryForObject(
             ProductQueries.INSERT_BY_ID.getSql(), productCardMapper, product.name()),
         null);
-  }
-
-  public void update(UUID id, UUID version, Product product) {
-    log.info("need to implement updating id {} version {} with product {}", id, version, product);
-  }
-
-  public void delete(UUID id, UUID version) {
-    log.info("need to implement deleting id {} version {}", id, version);
   }
 }

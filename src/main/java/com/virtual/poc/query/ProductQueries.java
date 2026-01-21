@@ -1,8 +1,8 @@
 package com.virtual.poc.query;
 
-import io.micrometer.common.util.StringUtils;
 import java.util.ArrayList;
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 public enum ProductQueries {
   INSERT_BY_ID("INSERT INTO product.inventory (name) VALUES (?) RETURNING *"),
@@ -18,7 +18,7 @@ public enum ProductQueries {
     this.sql = sql;
   }
 
-  public static Queries buildSearch(String nameFilter, int page, int size) {
+  public static Queries buildSearch(String nameFilter, int offset, int size) {
     var sql = new StringBuilder(BASE_SELECT.sql);
     var params = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public enum ProductQueries {
 
     sql.append(ORDER_PAGING.sql);
     params.add(size);
-    params.add(page * size);
+    params.add(offset * size);
     return new Queries(sql.toString(), params.toArray());
   }
 

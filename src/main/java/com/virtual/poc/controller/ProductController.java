@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -44,19 +43,5 @@ public class ProductController {
   public ResponseObject<Card> create(@NotNull @Valid @RequestBody Product product) {
     log.info("Handling create request for '{}' on {}", product.name(), Thread.currentThread());
     return service.createProduct(product);
-  }
-
-  @PutMapping("/product/{id}/{version}")
-  public void update(
-      @PathVariable("id") UUID productId,
-      @PathVariable("version") UUID productVersion,
-      @NonNull @Valid @RequestBody Product product) {
-    service.updateProduct(productId, productVersion, product);
-  }
-
-  @DeleteMapping("/product/{id}/{version}")
-  public void delete(
-      @PathVariable("id") UUID productId, @PathVariable("version") UUID productVersion) {
-    service.deleteProduct(productId, productVersion);
   }
 }
