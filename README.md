@@ -15,6 +15,7 @@ This project uses Virtual Threads (Java 21+) via `spring.threads.virtual.enabled
 - Java 25
 - Node.js 22+
 - Docker
+- ApacheBench
 
 ## Getting Started
 
@@ -49,6 +50,12 @@ npm run dev
 **5. Open the app**
 
 Head to [http://localhost:5173](http://localhost:5173) and expand your mind!
+
+**6. Load Test**
+
+Do side by sides with the virtual threads flag on and off. You will see the Virtual Thread's working in the terminal for your requests.
+
+`ab -n 500 -c 100 -m GET localhost:8080/product`
 
 ## Cleanup
 
